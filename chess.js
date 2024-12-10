@@ -1,7 +1,3 @@
-Share
-
-
-You said:
 // Initialize Babylon.js
 const canvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(canvas, true);
@@ -60,7 +56,7 @@ const createScene = () => {
                 let tile = tiles[row][col];
                 if (!tile) {
                     tile = BABYLON.MeshBuilder.CreateBox(
-                        tile${row}_${col},
+                        `tile${row}_${col}`,
                         { size: tileSize, height: 0.2 },
                         scene
                     );
@@ -74,7 +70,7 @@ const createScene = () => {
                 const tileMaterial =
                     tile.material ||
                     new BABYLON.StandardMaterial(
-                        tileMat${row}_${col},
+                        `tileMat${row}_${col}`,
                         scene
                     );
                 tileMaterial.diffuseColor =
@@ -135,14 +131,14 @@ const createScene = () => {
                 );
                 break;
             default:
-                console.error(Unknown piece type: ${type});
+                console.error(`Unknown piece type: ${type}`);
                 return null;
         }
 
         piece.position = position;
 
         const pieceMaterial = new BABYLON.StandardMaterial(
-            ${type}Mat,
+            `${type}Mat`,
             scene
         );
         pieceMaterial.diffuseColor = color;
@@ -278,12 +274,12 @@ const createScene = () => {
     turnIndicator.style.padding = "10px";
     turnIndicator.style.background = "rgba(0, 0, 0, 0.5)";
     turnIndicator.style.borderRadius = "5px";
-    turnIndicator.innerText = Current Turn: ${currentTurn};
+    turnIndicator.innerText = `Current Turn: ${currentTurn}`;
     document.body.appendChild(turnIndicator);
 
     const updateTurn = () => {
         currentTurn = currentTurn === "white" ? "black" : "white";
-        turnIndicator.innerText = Current Turn: ${currentTurn};
+        turnIndicator.innerText = `Current Turn: ${currentTurn}`;
     };
 
     // Movement logic
